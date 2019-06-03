@@ -7,7 +7,13 @@ module.exports = {
     connection: {
       filename: './data/lambdaNotesDevDB.sqlite3'
     },
-    useNullAsDefault: true
+    useNullAsDefault: true, 
+    migrations: {
+      directory: './data/migrations'
+    }, 
+    seeds: {
+      directory: './data/seeds'
+    }
   },
 
   // staging: {
