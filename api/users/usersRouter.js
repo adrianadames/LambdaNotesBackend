@@ -14,6 +14,19 @@ router.get('/', (req,res) => {
         })
 });
 
+router.get('/:id/noteEntries', (req,res) => {
+    const id = req.params.id;
+    db('noteEntries')
+        .where({userId:id})
+        .select()
+        .then(noteEntries => {
+            res.status(200).json(noteEntries);
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        })
+});
+
 router.post('/', (req,res) => {
     const user = req.body;
     db.insert(user)
