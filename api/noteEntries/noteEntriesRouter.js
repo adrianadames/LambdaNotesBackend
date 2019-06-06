@@ -19,8 +19,8 @@ router.get('/:id', (req,res) => {
     db('noteEntries')
         .where({id:id})
         .select()
-        .then(noteEntries => {
-            res.status(200).json(noteEntries);
+        .then(noteEntry => {
+            res.status(200).json(noteEntry);
         })
         .catch(err => {
             res.status(500).json(err);
