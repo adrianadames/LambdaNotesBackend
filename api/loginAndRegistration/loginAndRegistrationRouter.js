@@ -15,8 +15,8 @@ let generateToken = (user) => {
 };
 
 
-// api/register
-router.post('/api/register', (req,res) => {
+// api
+router.post('/register', (req,res) => {
     const user = req.body;
     const hash = bcrypt.hashSync(user.password,10);
     user.password = hash;
@@ -36,10 +36,10 @@ router.post('/api/register', (req,res) => {
             console.log(err);
             res.status(500).json({err});
         })
-})
+});
 
-// api/login
-router.post('/api/login', (req,res) => {
+// api
+router.post('/login', (req,res) => {
     const credentials = req.body;
     db('users')
         .where({username:credentials.username})
