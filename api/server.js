@@ -9,9 +9,11 @@ server.get('/', (req, res) => {
 const usersRouter = require('./users/usersRouter');
 const noteEntriesRouter = require('./noteEntries/noteEntriesRouter');
 const tagsRouter = require('./tags/tagsRouter');
+const loginAndRegistrationRouter = require('./loginAndRegistration/loginAndRegistrationRouter');
 
 server.use('/api/users', usersRouter);
 server.use('/api/noteEntries', noteEntriesRouter);
 server.use('/api/tags', tagsRouter);
+server.use('/api', loginAndRegistrationRouter);
 
 module.exports = server;
