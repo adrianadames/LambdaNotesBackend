@@ -17,6 +17,8 @@ let generateToken = (user) => {
 
 // api
 router.post('/register', (req,res) => {
+    console.log('/register hit');
+    console.log('req.body: ', req.body)
     const user = req.body;
     const hash = bcrypt.hashSync(user.password,10);
     user.password = hash;
@@ -29,7 +31,9 @@ router.post('/register', (req,res) => {
                 .first()
                 .then(user => {
                     const token = generateToken(user);
-                    res.status(201).json(token);
+                    const userId = ids[0];
+                    console.log(userId)
+                    res.status(201).json({token:token,userId:userId});
                 })
         })
         .catch(err => {
@@ -47,7 +51,7 @@ router.post('/login', (req,res) => {
         .then(user => {
             if (user && bcrypt.compareSync(credentials.password, user.password)) {
                 const token = generateToken(user);
-                res.send(token)
+                res.status(200).json({token:token, userId:user.id})
             } else {
                 return res.status(401).json({error:'Incorrect credentials'});
             }

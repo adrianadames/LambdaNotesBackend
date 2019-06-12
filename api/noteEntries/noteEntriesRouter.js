@@ -51,19 +51,24 @@ router.get('/:id/tags', (req,res) => {
 
 router.post('/', (req,res) => {
     const noteEntry = req.body;
+    console.log('noteEntry: ', noteEntry)
     db.insert(noteEntry)
         .into('noteEntries')
         .then(noteEntry => {
             res.status(201).json(noteEntry);
         })
         .catch(err => {
+            console.log(err)
             res.status(500).json(err);
         })
 });
 
 router.put('/:id', (req,res) => {
+    console.log('/api/noteEntries/:id hit')
     const noteEntry = req.body;
+    console.log('noteEntry: ', noteEntry)
     const id = req.params.id;
+    console.log('id: ', id)
     
     db('noteEntries')
         .where({id:id})
