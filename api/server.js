@@ -13,9 +13,9 @@ const noteEntriesRouter = require('./noteEntries/noteEntriesRouter');
 const tagsRouter = require('./tags/tagsRouter');
 const loginAndRegistrationRouter = require('./loginAndRegistration/loginAndRegistrationRouter');
 
-server.use('/api/users', usersRouter);
-server.use('/api/noteEntries', noteEntriesRouter);
-server.use('/api/tags', tagsRouter);
-server.use('/api', loginAndRegistrationRouter);
+server.use('api/users', usersRouter);
+server.use('api/noteEntries', noteEntriesRouter);
+server.use('api/tags', tagsRouter);
+server.use('api', loginAndRegistrationRouter);
 
 module.exports = server;
