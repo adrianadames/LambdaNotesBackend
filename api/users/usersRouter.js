@@ -14,6 +14,21 @@ router.get('/', (req,res) => {
         })
 });
 
+router.get('/:id', (req,res) => {
+    const id = req.params.id;
+    db('users')
+        .where({id:id})
+        .select()
+        .then(user => {
+            const username = user[0].username;
+            console.log(username)
+            res.status(200).json({username:username});
+        })
+        .catch(err => {
+            res.status(500).json(err);
+        })
+});
+
 router.get('/:id/noteEntries', (req,res) => {
     const id = req.params.id;
     db('noteEntries')
