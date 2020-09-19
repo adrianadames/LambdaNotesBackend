@@ -28,7 +28,7 @@ router.post('/register', (req,res) => {
         .then(ids => {
             db('users')
                 .where({id:ids[0]})
-                .first()
+                // .first()
                 .then(user => {
                     const token = generateToken(user);
                     const userId = ids[0];
