@@ -24,6 +24,7 @@ router.post('/register', (req,res) => {
     user.password = hash;
 
     db('users')
+        .returning('id')
         .insert(user)
         .then(ids => {
             console.log('ids = ', ids)
