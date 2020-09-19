@@ -26,6 +26,7 @@ router.post('/register', (req,res) => {
     db('users')
         .insert(user)
         .then(ids => {
+            console.log('ids = ', ids)
             db('users')
                 .where({id:ids[0]})
                 // .first()
